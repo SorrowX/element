@@ -1,5 +1,6 @@
 import navConfig from './nav.config';
 import langs from './i18n/route';
+import customRoutes from './demo/route.config.js'
 
 const LOAD_MAP = {
   'zh-CN': name => {
@@ -167,6 +168,7 @@ route.push({
   name: 'play',
   component: require('./play/index.vue')
 });
+route.push(customRoutes)
 
 let userLanguage = localStorage.getItem('ELEMENT_LANGUAGE') || window.navigator.language || 'en-US';
 let defaultPath = '/en-US';
