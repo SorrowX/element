@@ -4,7 +4,7 @@ const routes = {
     children: [
         {
             path: 'loading',  
-            component: () => import('./loading'),
+            component: () => import('./loading/index'),
         },
         {
             path: 'tree',  

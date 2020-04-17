@@ -418,7 +418,11 @@
         return this.langs[this.lang] || '中文';
       },
       langConfig() {
-        return compoLang.filter(config => config.lang === this.lang)[0]['header'];
+        try {
+          return compoLang.filter(config => config.lang === this.lang)[0]['header'];
+        } catch(e) {
+          return {}
+        }
       },
       isComponentPage() {
         return /^component/.test(this.$route.name);

@@ -177,7 +177,12 @@
       },
 
       langConfig() {
-        return compoLang.filter(config => config.lang === this.lang)[0]['footer'];
+        try {
+          return compoLang.filter(config => config.lang === this.lang)[0]['footer'];
+        } catch(e) {
+          return {}
+        }
+        
       },
 
       gitterLink() {
