@@ -8,7 +8,23 @@ const routes = {
         },
         {
             path: 'tree',  
-            component: () => import('./tree'),
+            component: () => import('./tree/index'),
+        },
+        {
+            path: 'scrollbar',  
+            component: () => import('./scrollbar/index'),
+        },
+        {
+            path: 'grid',  
+            component: () => import('./grid/index'),
+        }, 
+        {
+            path: 'collapse',
+            component: () => import('./collapse/index')
+        },
+        {
+            path: 'checkbox',
+            component: () => import('./checkbox/index')
         }
     ]
 }

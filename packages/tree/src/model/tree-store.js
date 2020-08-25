@@ -3,6 +3,7 @@ import { getNodeKey } from './util';
 
 export default class TreeStore {
   constructor(options) {
+    debugger
     this.currentNode = null;
     this.currentNodeKey = null;
 

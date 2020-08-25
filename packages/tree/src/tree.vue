@@ -64,7 +64,7 @@
     },
 
     props: {
-      data: {
+      data: { // 展示数据
         type: Array
       },
       emptyText: {
@@ -77,25 +77,25 @@
         type: Boolean,
         default: true
       },
-      nodeKey: String,
-      checkStrictly: Boolean,
-      defaultExpandAll: Boolean,
+      nodeKey: String, // 每个树节点用来作为唯一标识的属性，整棵树应该是唯一的
+      checkStrictly: Boolean, // 在显示复选框的情况下，是否严格的遵循父子不互相关联的做法，默认为 false
+      defaultExpandAll: Boolean, // 是否默认展开所有节点
       expandOnClickNode: {
         type: Boolean,
         default: true
       },
       checkOnClickNode: Boolean,
-      checkDescendants: {
+      checkDescendants: { // 是否检查后代
         type: Boolean,
         default: false
       },
-      autoExpandParent: {
+      autoExpandParent: { // 展开子节点的时候是否自动展开父节点
         type: Boolean,
         default: true
       },
-      defaultCheckedKeys: Array,
-      defaultExpandedKeys: Array,
-      currentNodeKey: [String, Number],
+      defaultCheckedKeys: Array, // 默认勾选的节点的 key 的数组
+      defaultExpandedKeys: Array, // 默认展开的节点的 key 的数组
+      currentNodeKey: [String, Number], //  当前选中的节点
       renderContent: Function,
       showCheckbox: {
         type: Boolean,
@@ -107,7 +107,7 @@
       },
       allowDrag: Function,
       allowDrop: Function,
-      props: {
+      props: { //  配置选项
         default() {
           return {
             children: 'children',
@@ -116,13 +116,13 @@
           };
         }
       },
-      lazy: {
+      lazy: { // 是否懒加载子节点，需与 load 方法结合使用
         type: Boolean,
         default: false
       },
       highlightCurrent: Boolean,
-      load: Function,
-      filterNodeMethod: Function,
+      load: Function, // 加载子树数据的方法，仅当 lazy 属性为true 时生效
+      filterNodeMethod: Function, // 对树节点进行筛选时执行的方法，返回 true 表示这个节点可以显示，返回 false 则表示这个节点会被隐藏
       accordion: Boolean,
       indent: {
         type: Number,
@@ -320,22 +320,23 @@
     },
 
     created() {
+      debugger
       this.isTree = true;
 
       this.store = new TreeStore({
-        key: this.nodeKey,
-        data: this.data,
-        lazy: this.lazy,
-        props: this.props,
-        load: this.load,
-        currentNodeKey: this.currentNodeKey,
-        checkStrictly: this.checkStrictly,
-        checkDescendants: this.checkDescendants,
-        defaultCheckedKeys: this.defaultCheckedKeys,
-        defaultExpandedKeys: this.defaultExpandedKeys,
-        autoExpandParent: this.autoExpandParent,
-        defaultExpandAll: this.defaultExpandAll,
-        filterNodeMethod: this.filterNodeMethod
+        key: this.nodeKey, // [String 默认undefined] 每个树节点用来作为唯一标识的属性，整棵树应该是唯一的
+        data: this.data, // [Array 默认undefined] 展示数据
+        lazy: this.lazy, // [Boolean 默认false] 是否懒加载子节点，需与 load 方法结合使用
+        props: this.props, // [Object] 配置选项
+        load: this.load, // [Function 默认undefined] 加载子树数据的方法，仅当 lazy 属性为true 时生效
+        currentNodeKey: this.currentNodeKey, // [string, number 默认undefined] 当前选中的节点
+        checkStrictly: this.checkStrictly, // [Boolean 默认undefined] 在显示复选框的情况下，是否严格的遵循父子不互相关联的做法，默认为 false
+        checkDescendants: this.checkDescendants, //  [Boolean 默认false] 是否检查后代
+        defaultCheckedKeys: this.defaultCheckedKeys, // [Array 默认undefined] 默认勾选的节点的 key 的数组
+        defaultExpandedKeys: this.defaultExpandedKeys, // [Array 默认undefined] 默认展开的节点的 key 的数组
+        autoExpandParent: this.autoExpandParent, // [Boolean 默认true] 展开子节点的时候是否自动展开父节点
+        defaultExpandAll: this.defaultExpandAll, // [Boolean 默认undefined] 是否默认展开所有节点
+        filterNodeMethod: this.filterNodeMethod // [Function 默认undefined] 对树节点进行筛选时执行的方法，返回 true 表示这个节点可以显示，返回 false 则表示这个节点会被隐藏
       });
 
       this.root = this.store.root;

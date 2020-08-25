@@ -8,3 +8,6 @@
         name: 'Demo'
     }
 </script>
+<style lang="scss">
+    @import '../../packages/theme-chalk/lib/display.css';
+</style>

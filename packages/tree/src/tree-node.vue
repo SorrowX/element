@@ -203,6 +203,7 @@
       },
 
       handleCheckChange(value, ev) {
+        debugger
         this.node.setChecked(ev.target.checked, !this.tree.checkStrictly);
         this.$nextTick(() => {
           const store = this.tree.store;
@@ -242,6 +243,7 @@
     },
 
     created() {
+      debugger
       const parent = this.$parent;
 
       if (parent.isTree) {
